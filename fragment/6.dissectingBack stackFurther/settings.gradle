@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "fragment_pop_back_stack"

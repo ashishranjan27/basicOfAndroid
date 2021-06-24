@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <!--By default name of generated java code will be MainActivityBinding+Impl depending on the
+      name of the corresponding java class and you can change here in below statement by changing the
+      name generated one also get changed-->
+    <data class="MainActivityBinding">
+        <variable
+            name="text1"
+            type="String" />
+        <variable
+            name="second_text"
+            type="String" />
+        <variable
+            name="mainViewModel"
+            type="com.example.bindinglayoutandbindingstaticdata.viewmodels.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <!--if you want to use the normal data then it is ok but if you
+         want to use the mainViewModel then replace line no 35 and 47 correspondingly-->
+<!--        android:text="@{text1, default=`place holder`}"-->
+
+        <TextView
+            android:id="@+id/tv_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@{mainViewModel.getUser().firstName, default=`Place holder1`}"
+            android:textSize="36sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include android:id="@+id/include_layout"
+            layout="@layout/layout_second"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_first"/>
+
+        <include android:id="@+id/include_layout2"
+            layout="@layout/layout_third"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            bind:thirdViewModel="@{mainViewModel}"
+            app:layout_constraintTop_toBottomOf="@+id/include_layout"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

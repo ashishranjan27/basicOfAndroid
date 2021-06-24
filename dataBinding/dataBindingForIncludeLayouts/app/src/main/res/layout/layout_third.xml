@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+          <variable
+              name="thirdViewModel"
+              type="com.example.bindinglayoutandbindingstaticdata.viewmodels.MainViewModel" />
+        
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:textSize="36sp"
+            android:text="@{String.valueOf(thirdViewModel.getUser().age), default=`Place holder1`}" />
+
+
+    </LinearLayout>
+</layout>
